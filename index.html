@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" href="./corazon.png" type="image/png">
+    <title>Pregunta Importante</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+        flex-direction: column;
+      }
+      .buttons {
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      #siBtn {
+        background-color: #4caf50;
+        color: white;
+        transition: all 0.5s; /* Transición suave para el cambio de tamaño */
+      }
+      #noBtn {
+        background-color: #f44336;
+        color: white;
+      }
+      #mensaje {
+        display: none;
+        margin-top: 20px;
+        color: #4caf50;
+        font-size: 24px;
+
+        h2,
+        p {
+          line-height: normal;
+          color: black;
+        }
+      }
+      #mensajeNo {
+        display: none;
+        margin-top: 20px;
+        color: #f44336;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="pregunta">¿Querés ser mi novia?</h1>
+    <div class="buttons">
+      <button id="siBtn">Sí ❤️</button>
+      <button id="noBtn">No 😭</button>
+    </div>
+
+    <div id="mensaje">
+      <h2>TIIII</h2>
+      <h2>TE AMO PRINCESA ❤️</h2>
+      <p>igual tmp te iba a dejar decir que no...</p>
+    </div>
+    <div id="mensajeNo"></div>
+
+    <script>
+      var mensajes = [
+        "??????????",
+        "eeeem wat",
+        "amor?",
+        "faaaaa no me lo esperaba",
+        "tisteza",
+        "posta me lo decis?",
+        "es joda?",
+        "me reconoces?",
+        "soy yo gorda, tu memé",
+        "gorda?",
+        "no me la contessss",
+        "la veldad nao entiendo",
+      ];
+
+      const siBtn = document.getElementById("siBtn");
+      const mensajeNo = document.getElementById("mensajeNo");
+
+      siBtn.addEventListener("click", function () {
+        document.getElementById("pregunta").style.display = "none";
+        document.getElementById("mensaje").style.display = "block";
+        document.getElementsByClassName("buttons")[0].style.display = "none";
+      });
+
+      document.getElementById("noBtn").addEventListener("click", function () {
+        const randomIndex = Math.floor(Math.random() * mensajes.length);
+        const numRand = Math.floor(Math.random() * (150 - 75 + 1)) + 75;
+        mensajeNo.innerText = mensajes[randomIndex];
+        mensajeNo.style.display = "block";
+        siBtn.addEventListener("click", function () {
+          mensajeNo.style.display = "none";
+        });
+        siBtn.style.width = siBtn.offsetWidth + numRand + "px";
+        siBtn.style.height = siBtn.offsetHeight + numRand + "px";
+      });
+    </script>
+  </body>
+</html>
