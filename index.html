@@ -41,14 +41,17 @@
       }
       #mensaje {
         display: none;
-        margin-top: 20px;
-        color: #4caf50;
-        font-size: 24px;
+        text-align: left;
 
-        h2,
-        p {
-          line-height: normal;
-          color: black;
+        h2{
+          margin-bottom: .2rem;
+        }
+        h2 span{
+          font-size: 10px;
+        }
+
+        p{
+          font-size: 16px;
         }
       }
       #mensajeNo {
@@ -57,9 +60,57 @@
         color: #f44336;
         font-size: 24px;
       }
+
+
+      /* RELOJ */
+
+      /* Estilos opcionales */
+      body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        #reloj {
+          color: black;
+        }
+
     </style>
   </head>
   <body>
+     <h2 id="reloj"></h2>
+     
+     <script>
+         function actualizarReloj() {
+            var ahora = new Date();
+            var dia = ahora.getDate();
+            var mes = ahora.getMonth() + 1;
+            var año = ahora.getFullYear();
+            var horas = ahora.getHours();
+            var minutos = ahora.getMinutes();
+            var segundos = ahora.getSeconds();
+
+            dia = dia < 10 ? '0' + dia : dia;
+            mes = mes < 10 ? '0' + mes : mes;
+            horas = horas < 10 ? '0' + horas : horas;
+            minutos = minutos < 10 ? '0' + minutos : minutos;
+            segundos = segundos < 10 ? '0' + segundos : segundos;
+            
+            var fechaActual = dia + '/' + mes + '/' + año;
+            var horaActual = horas + ':' + minutos + ':' + segundos;
+            document.getElementById('reloj').textContent = 'HOY ' + fechaActual + ' A LAS ' + horaActual;
+        }
+
+        setInterval(actualizarReloj, 1000);
+
+        actualizarReloj();
+     </script>
+
+
     <h1 id="pregunta">¿Querés ser mi novia?</h1>
     <div class="buttons">
       <button id="siBtn">Sí ❤️</button>
@@ -67,7 +118,7 @@
     </div>
 
     <div id="mensaje">
-      <h2>TIIII</h2>
+      <h2>YA SABÍA 😏 <span>(que emoji horrible)</span></h2>
       <h2>TE AMO PRINCESA ❤️</h2>
       <p>igual tmp te iba a dejar decir que no...</p>
     </div>
@@ -91,11 +142,13 @@
 
       const siBtn = document.getElementById("siBtn");
       const mensajeNo = document.getElementById("mensajeNo");
+      const reloj = document.getElementById('reloj')
 
       siBtn.addEventListener("click", function () {
         document.getElementById("pregunta").style.display = "none";
         document.getElementById("mensaje").style.display = "block";
         document.getElementsByClassName("buttons")[0].style.display = "none";
+        reloj.style.display = "none";
       });
 
       document.getElementById("noBtn").addEventListener("click", function () {
