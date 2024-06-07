@@ -3,23 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" href="./corazon.png" type="image/png">
+    <link rel="icon" href="./corazon.png" type="image/png" />
     <title>Pregunta Importante</title>
     <style>
       * {
         margin: 0;
         padding: 0;
-      }
-      body {
-        overflow: hidden;
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f0f0f0;
-        margin: 0;
-        flex-direction: column;
       }
       .buttons {
         margin-top: 20px;
@@ -41,16 +30,13 @@
       }
       #mensaje {
         display: none;
-        text-align: left;
+        text-align: center;
 
-        h2{
-          margin-bottom: .2rem;
-        }
-        h2 span{
-          font-size: 10px;
+        h2 {
+          margin-bottom: 0.2rem;
         }
 
-        p{
+        p {
           font-size: 16px;
         }
       }
@@ -61,68 +47,78 @@
         font-size: 24px;
       }
 
-
       /* RELOJ */
-
-      /* Estilos opcionales */
       body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-        #reloj {
-          color: black;
-        }
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+      }
 
+      #reloj {
+        color: black;
+      }
+
+      .container {
+        margin: 0 1rem;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+      }
     </style>
   </head>
   <body>
-     <h2 id="reloj"></h2>
-     
-     <script>
-         function actualizarReloj() {
-            var ahora = new Date();
-            var dia = ahora.getDate();
-            var mes = ahora.getMonth() + 1;
-            var año = ahora.getFullYear();
-            var horas = ahora.getHours();
-            var minutos = ahora.getMinutes();
-            var segundos = ahora.getSeconds();
+    <div class="container">
+      <h2 id="reloj"></h2>
 
-            dia = dia < 10 ? '0' + dia : dia;
-            mes = mes < 10 ? '0' + mes : mes;
-            horas = horas < 10 ? '0' + horas : horas;
-            minutos = minutos < 10 ? '0' + minutos : minutos;
-            segundos = segundos < 10 ? '0' + segundos : segundos;
-            
-            var fechaActual = dia + '/' + mes + '/' + año;
-            var horaActual = horas + ':' + minutos + ':' + segundos;
-            document.getElementById('reloj').textContent = 'HOY ' + fechaActual + ' A LAS ' + horaActual;
-        }
+      <h1 id="pregunta">¿Querés ser mi novia?</h1>
+      <div class="buttons">
+        <button id="siBtn">Sí ❤️</button>
+        <button id="noBtn">No 😭</button>
+      </div>
 
-        setInterval(actualizarReloj, 1000);
-
-        actualizarReloj();
-     </script>
-
-
-    <h1 id="pregunta">¿Querés ser mi novia?</h1>
-    <div class="buttons">
-      <button id="siBtn">Sí ❤️</button>
-      <button id="noBtn">No 😭</button>
+      <div id="mensaje">
+        <h2>YA SABÍA 😏</h2>
+        <h2>TE AMO PRINCESA ❤️</h2>
+        <p>igual tmp te iba a dejar decir que no...</p>
+      </div>
+      <div id="mensajeNo"></div>
     </div>
 
-    <div id="mensaje">
-      <h2>YA SABÍA 😏 <span>(que emoji horrible)</span></h2>
-      <h2>TE AMO PRINCESA ❤️</h2>
-      <p>igual tmp te iba a dejar decir que no...</p>
-    </div>
-    <div id="mensajeNo"></div>
+    <script>
+      function actualizarReloj() {
+        var ahora = new Date();
+        var dia = ahora.getDate();
+        var mes = ahora.getMonth() + 1;
+        var año = ahora.getFullYear();
+        var horas = ahora.getHours();
+        var minutos = ahora.getMinutes();
+        var segundos = ahora.getSeconds();
+
+        dia = dia < 10 ? "0" + dia : dia;
+        mes = mes < 10 ? "0" + mes : mes;
+        horas = horas < 10 ? "0" + horas : horas;
+        minutos = minutos < 10 ? "0" + minutos : minutos;
+        segundos = segundos < 10 ? "0" + segundos : segundos;
+
+        var fechaActual = dia + "/" + mes + "/" + año;
+        var horaActual = horas + ":" + minutos + ":" + segundos;
+        document.getElementById("reloj").textContent =
+          "HOY " + fechaActual + " A LAS " + horaActual;
+      }
+
+      setInterval(actualizarReloj, 1000);
+
+      actualizarReloj();
+    </script>
 
     <script>
       var mensajes = [
@@ -142,7 +138,7 @@
 
       const siBtn = document.getElementById("siBtn");
       const mensajeNo = document.getElementById("mensajeNo");
-      const reloj = document.getElementById('reloj')
+      const reloj = document.getElementById("reloj");
 
       siBtn.addEventListener("click", function () {
         document.getElementById("pregunta").style.display = "none";
